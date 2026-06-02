@@ -30,9 +30,8 @@ pipeline {
             steps {
                 sh '''
                 cd $WORKSPACE
-
+                docker-compose down
                 docker-compose pull
-
                 docker-compose up -d
                 '''
             }
