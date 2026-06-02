@@ -30,5 +30,19 @@ pipeline {
                 sh 'docker push nitin260/doc-web:latest'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                cd $WORKSPACE
+
+                docker compose down
+
+                docker compose pull
+
+                docker compose up -d
+                '''
+            }
+        }
     }
 }
