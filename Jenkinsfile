@@ -2,13 +2,11 @@ pipeline {
     agent any
 
     stages {
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t nitin260/doc-web:latest .'
             }
         }
-
         stage('Docker Login') {
             steps {
                 withCredentials([
@@ -24,13 +22,11 @@ pipeline {
                 }
             }
         }
-
         stage('Push Image') {
             steps {
                 sh 'docker push nitin260/doc-web:latest'
             }
         }
-
         stage('Deploy') {
             steps {
                 sh '''
